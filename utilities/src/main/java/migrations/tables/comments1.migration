@@ -1,0 +1,14 @@
+CREATE TABLE comments (
+    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id int(11) NOT NULL ,
+    post_id int(11) NOT NULL ,
+    content TEXT NOT NULL ,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW() ,
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE now(),
+    CONSTRAINT fkc_user FOREIGN KEY (user_id)  
+    REFERENCES users(id)  
+    ON DELETE Cascade,
+    CONSTRAINT fkc_post FOREIGN KEY (post_id)  
+    REFERENCES posts(id)  
+    ON DELETE Cascade
+)

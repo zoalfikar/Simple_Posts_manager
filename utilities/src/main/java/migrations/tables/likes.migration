@@ -1,0 +1,13 @@
+CREATE TABLE likes (
+    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id int(11) NOT NULL ,
+    post_id int(11) NOT NULL ,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW() ,
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE now(),
+    CONSTRAINT fkl_user FOREIGN KEY (user_id)  
+    REFERENCES users(id)  
+    ON DELETE Cascade,
+    CONSTRAINT fkl_post FOREIGN KEY (post_id)  
+    REFERENCES posts(id)  
+    ON DELETE Cascade
+)
